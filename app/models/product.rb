@@ -5,9 +5,8 @@ class Product < ApplicationRecord
   has_many :store_products
   has_many :stores, through: :store_products
 
-  has_many :sizes
-  attribute :styles, :string, array: true
-  attribute :tags, :string, array: true
+  has_one :size
+  has_many :styles
 
   class << self
     def search_by(user, store_id, collection_id)

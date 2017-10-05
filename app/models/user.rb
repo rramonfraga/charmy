@@ -1,4 +1,4 @@
 class User < ApplicationRecord
   has_many :sizes
-  attribute :styles, :string, array: true
+  has_many :styles
 end
