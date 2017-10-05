@@ -1,4 +1,4 @@
-class EventCreaterJob < ApplicationJob
+class EventCreatorJob < ApplicationJob
   queue_as :default
 
   def perform(name, product_id, user_id, store_id)
