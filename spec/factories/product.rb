@@ -7,6 +7,7 @@ FactoryGirl.define do
     position { %w(A1 A2 B1 B2).sample }
     gender { %w(male female).sample }
     material { %w(cottom nylon).sample }
-    size { create(:size) }
+    size_id { create(:size).id }
+    store { create(:store) }
   end
 end
