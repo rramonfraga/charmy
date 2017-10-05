@@ -3,7 +3,7 @@ class Store < ApplicationRecord
 
   class << self
     def take_config_store
-      Store.new(id: 'STORE', name: 'my_store')
+      Store.find_by(id: 0)
     end
   end
 end

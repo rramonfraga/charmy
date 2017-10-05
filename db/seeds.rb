@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 def create_store
-  Store.create(id: 'STORE', name: 'Gran Via')
+  Store.create(id: 0, name: 'Gran Via')
 end
 
 def create_size
@@ -32,7 +32,7 @@ def create_products
     position: 'A1',
     gender: 'female',
     material: 'cotton',
-    store: Store.find('STORE'),
+    store: Store.find(0),
     size_id: Size.find_by(category: 't-shirt').id,
     style_ids: [Style.all.sample]
   )
@@ -44,7 +44,7 @@ def create_products
     position: 'B1',
     gender: 'female',
     material: 'cotton',
-    store: Store.find('STORE'),
+    store: Store.find(0),
     size_id: Size.find_by(category: 'jeans').id,
     style_ids: [Style.all.sample]
   )
@@ -56,7 +56,7 @@ def create_products
     position: 'C1',
     gender: 'female',
     material: 'cotton',
-    store: Store.find('STORE'),
+    store: Store.find(0),
     size_id: Size.find_by(category: 'shoes').id,
     style_ids: [Style.all.sample]
   )

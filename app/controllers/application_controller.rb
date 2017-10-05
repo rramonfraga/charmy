@@ -3,7 +3,12 @@ class ApplicationController < ActionController::API
   include Response
 
   def create_event(name:, product_id:, user_id:)
-    EventCreaterJob.perform_asycn(name, product_id, user_id, current_store.id)
+    Event.delay.create(
+      name: name,
+      product_id: product_id,
+      user_id: user_id,
+      store_id: current_store.id
+    )
   end
 
   def current_store

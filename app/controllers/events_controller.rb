@@ -1,4 +1,9 @@
 class EventsController < ApplicationController
+  def index
+    events = Event.all
+    json_response(event)
+  end
+
   def create
     event = Event.new(event_params)
     if event.valid?

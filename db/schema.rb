@@ -10,21 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005174412) do
+ActiveRecord::Schema.define(version: 20171005211920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
+    t.string "user_id"
+    t.string "product_id"
     t.bigint "store_id"
-    t.bigint "user_id"
-    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_events_on_product_id"
     t.index ["store_id"], name: "index_events_on_store_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "fashion_set_products", force: :cascade do |t|
