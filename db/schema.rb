@@ -38,50 +38,43 @@ ActiveRecord::Schema.define(version: 20171005174412) do
 
   create_table "fashion_sets", force: :cascade do |t|
     t.string "name"
+    t.string "style_id"
     t.datetime "date"
-    t.bigint "style_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_fashion_set_file_name"
     t.string "image_fashion_set_content_type"
     t.integer "image_fashion_set_file_size"
     t.datetime "image_fashion_set_updated_at"
-    t.index ["style_id"], name: "index_fashion_sets_on_style_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.string "type"
+    t.string "category"
     t.integer "price"
     t.string "color"
     t.string "position"
     t.string "gender"
     t.string "material"
+    t.string "size_id"
+    t.bigint "store_id"
+    t.text "style_ids", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_product_file_name"
     t.string "image_product_content_type"
     t.integer "image_product_file_size"
     t.datetime "image_product_updated_at"
+    t.index ["store_id"], name: "index_products_on_store_id"
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.string "symbol"
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "store_products", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "store_id"
-    t.boolean "enable", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_store_products_on_product_id"
-    t.index ["store_id"], name: "index_store_products_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
