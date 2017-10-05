@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :styles, only: :index
   resources :sizes, only: :index
   resources :fashion_sets, only: :show do
-    get 'suggest', on: :collection
+    post 'suggest', on: :collection
   end
   resources :events, only: :create
   resources :users, only: :update
