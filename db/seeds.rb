@@ -24,7 +24,7 @@ def create_styles
 end
 
 def create_products
-  Product.create(name: "Top",
+  p1 = Product.create(name: 'Top',
     code: "TOP#{Random.rand(10)}",
     category: 'top',
     price: Random.rand(30),
@@ -36,7 +36,7 @@ def create_products
     size_id: Size.find_by(category: 't-shirt').id,
     style_ids: [Style.all.sample]
   )
-  Product.create(name: "Jeans",
+  p2 = Product.create(name: 'Jeans',
     code: "JEANS#{Random.rand(10)}",
     category: 'bottom',
     price: Random.rand(30),
@@ -48,7 +48,7 @@ def create_products
     size_id: Size.find_by(category: 'jeans').id,
     style_ids: [Style.all.sample]
   )
-  Product.create(name: "Shoes",
+  p3 = Product.create(name: 'Shoes',
     code: "SHOES#{Random.rand(10)}",
     category: 'shoes',
     price: Random.rand(30),
@@ -60,6 +60,11 @@ def create_products
     size_id: Size.find_by(category: 'shoes').id,
     style_ids: [Style.all.sample]
   )
+  f1 = FashionSet.new(name: "SET#{Random.rand(10)}", style_id: Style.all.sample.id)
+  f1.products << p1
+  f1.products  << p2
+  f1.products  << p3
+  f1.save
 end
 
 create_store
