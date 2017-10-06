@@ -7,7 +7,7 @@ RSpec.describe EventsController, type: :controller do
   #   end
   #
   #   context 'when the request is valid' do
-  #     before { byebug; post '/events', params: valid_attributes }
+  #     before { post '/events', params: valid_attributes }
   #
   #     it 'creates a event' do
   #       expect(json['name']).to eq('Product Choose')
