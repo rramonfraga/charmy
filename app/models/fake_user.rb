@@ -21,6 +21,10 @@ class FakeUser
     Style.where(id: style_ids)
   end
 
+  def random_style
+    styles.sample
+  end
+
   def persisted?
     false
   end

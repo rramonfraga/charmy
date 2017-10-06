@@ -60,7 +60,14 @@ def create_products
     size_id: Size.find_by(category: 'shoes').id,
     style_ids: [Style.all.sample]
   )
-  f1 = FashionSet.new(name: "SET#{Random.rand(10)}", style_id: Style.all.sample.id)
+  byebug
+  f1 = FashionSet.new(
+    name: "SET#{Random.rand(10)}",
+    gender: 'female',
+    colors: ['grey', 'red'],
+    style: Style.first,
+    store: Store.find(0)
+  )
   f1.products << p1
   f1.products  << p2
   f1.products  << p3

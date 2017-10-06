@@ -14,4 +14,9 @@ class ApplicationController < ActionController::API
   def current_store
     @current_store ||= Store.take_config_store
   end
+
+  def current_user
+    return if session[:user_id].blank?
+    @current_user ||= User.find(session[:user_id])
+  end
 end

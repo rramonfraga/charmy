@@ -51,7 +51,10 @@ ActiveRecord::Schema.define(version: 20171005211920) do
 
   create_table "fashion_sets", force: :cascade do |t|
     t.string "name"
-    t.string "style_id"
+    t.string "gender"
+    t.string "colors", default: [], array: true
+    t.bigint "store_id"
+    t.bigint "style_id"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,6 +62,8 @@ ActiveRecord::Schema.define(version: 20171005211920) do
     t.string "image_fashion_set_content_type"
     t.integer "image_fashion_set_file_size"
     t.datetime "image_fashion_set_updated_at"
+    t.index ["store_id"], name: "index_fashion_sets_on_store_id"
+    t.index ["style_id"], name: "index_fashion_sets_on_style_id"
   end
 
   create_table "products", force: :cascade do |t|
