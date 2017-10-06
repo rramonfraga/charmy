@@ -1,17 +1,7 @@
-class FakeUser
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-
+class FakeUser < ApplicationRecord
   attr_accessor :gender, :color, :style_ids, :size_ids
 
   validates :gender, :color, :style_ids, :size_ids, presence: true
-
-  def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
-    end
-  end
 
   def sizes
     Size.where(id: size_ids)
@@ -23,9 +13,5 @@ class FakeUser
 
   def random_style
     styles.sample
-  end
-
-  def persisted?
-    false
   end
 end

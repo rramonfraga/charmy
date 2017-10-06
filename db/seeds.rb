@@ -60,7 +60,6 @@ def create_products
     size_id: Size.find_by(category: 'shoes').id,
     style_ids: [Style.all.sample]
   )
-  byebug
   f1 = FashionSet.new(
     name: "SET#{Random.rand(10)}",
     gender: 'female',
