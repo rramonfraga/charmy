@@ -18,8 +18,8 @@ def create_size
 end
 
 def create_styles
-  %w(classic vintage urban stret).each do |name|
-    Style.create(name: name)
+  %w(casual clasico hipster minimal moderneo street).each do |name|
+    Style.create(name: name, image_style: File.new("#{Rails.root}/public/images/styles/#{name}.png"))
   end
 end
 
